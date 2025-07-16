@@ -1,3 +1,4 @@
+import ssl
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -12,4 +13,5 @@ def index():
         return "Bem vindo a API de NOTAS com FLASK!"
 
 if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=5000, debug=True)
+        app.run(host='0.0.0.0', port=5000, debug=True, ssl_context=('cert.pem', 'key.pem'))
+
