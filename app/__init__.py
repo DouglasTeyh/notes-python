@@ -15,6 +15,7 @@ def create_app():
 
     with app.app_context():
         from .models.model import Note
+        db.create_all()
 
     from .routes.routes import note_bp
     app.register_blueprint(note_bp, url_prefix='/notes')

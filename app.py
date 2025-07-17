@@ -1,12 +1,9 @@
 import ssl
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
 import os
+from app import create_app
 
-db = SQLAlchemy()
-
-app = Flask(__name__)
+app = create_app()
 
 @app.route('/')
 def index():
@@ -14,4 +11,3 @@ def index():
 
 if __name__ == '__main__':
         app.run(host='0.0.0.0', port=5000, debug=True, ssl_context=('cert.pem', 'key.pem'))
-
