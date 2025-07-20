@@ -1,5 +1,5 @@
-from app import db
-from models.note import Note
+from app.db import db
+from app.models.note import Note
 
 class NotesRepository:
     

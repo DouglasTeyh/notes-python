@@ -1,16 +1,16 @@
 from flask import Blueprint, jsonify, request
 from app.models.note import Note
-from controller.notes_controller import NotesController
-from exceptions.exceptions import NotaNaoEncontradaException
+from app.controller.notes_controller import NotesController
+from app.exceptions.exceptions import NotaNaoEncontradaException
 
 note_bp = Blueprint('note_bp', __name__)
 
-@note_bp.route('/<int:id_usuario>', methods=['GET'], methods=['POST'])
+@note_bp.route('/<int:id_usuario>', methods=['POST'])
 def adicionar_nota(id_usuario):
     data = request.get_json()
     
     try:
-        nova_nota = NotesController.criar_nota(Note(message=data['message'], user_id=id_usuario))
+        nova_nota = NotesController.criar_nota(Note(message=data['message'])) # user_id=id_usuario
         return jsonify(nova_nota.to_dict()), 201
     except ValueError as ve:
         return jsonify({'Error': str(ve)}), 400

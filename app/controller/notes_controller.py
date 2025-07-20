@@ -1,6 +1,6 @@
-from utils.functions import verify_string
-from repository.notes_repository import NotesRepository
-from exceptions.exceptions import NotaNaoEncontradaException
+from app.utils.functions import verify_string
+from app.repository.notes_repository import NotesRepository
+from app.exceptions.exceptions import NotaNaoEncontradaException
 import datetime, pytz
 
 class NotesController:
@@ -8,12 +8,12 @@ class NotesController:
     @staticmethod
     def criar_nota(data: object):
         nota = data
-        nota.message = verify_string(data['message'])
+        nota.message = verify_string(data.message, 'message')
 
-        if not nota.user_id:
-            raise ValueError('user_id é obrigatório')
+        # if not nota.user_id:
+        #     raise ValueError('user_id é obrigatório')
         
-        nota_criada = NotesRepository(nota)
+        nota_criada = NotesRepository.criar_nota(nota)
         return nota_criada
     
     @staticmethod
