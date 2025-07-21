@@ -10,7 +10,7 @@ def adicionar_nota(id_usuario):
     data = request.get_json()
     
     try:
-        nova_nota = NotesController.criar_nota(Note(message=data['message'])) # user_id=id_usuario
+        nova_nota = NotesController.criar_nota(Note(title=['title'], message=data['message'])) # user_id=id_usuario
         return jsonify(nova_nota.to_dict()), 201
     except ValueError as ve:
         return jsonify({'Error': str(ve)}), 400
