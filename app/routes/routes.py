@@ -5,12 +5,12 @@ from app.exceptions.exceptions import NotaNaoEncontradaException
 
 note_bp = Blueprint('note_bp', __name__)
 
-@note_bp.route('/<int:id_usuario>', methods=['POST'])
-def adicionar_nota(id_usuario):
+@note_bp.route('/', methods=['POST'])
+def adicionar_nota():
     data = request.get_json()
     
     try:
-        nova_nota = NotesController.criar_nota(Note(title=['title'], message=data['message'])) # user_id=id_usuario
+        nova_nota = NotesController.criar_nota(Note(title=data['title'], message=data['message'])) # user_id=id_usuario
         return jsonify(nova_nota.to_dict()), 201
     except ValueError as ve:
         return jsonify({'Error': str(ve)}), 400
@@ -41,8 +41,8 @@ def editar_nota(id_nota):
     data = request.get_json()
     
     try:
-        nota = NotesController.editar_nota(Note(id_nota, data['message']))
-        return jsonify({nota.to_dict()}),200
+        nota = NotesController.editar_nota(id_nota, Note(title=data['title'], message=data['message']))
+        return jsonify(nota.to_dict()),200
     except NotaNaoEncontradaException as nnee:
         return jsonify({'Error': str(nnee)}), 400
     except ValueError as ve:

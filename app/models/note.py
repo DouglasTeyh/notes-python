@@ -9,11 +9,11 @@ class Note(db.Model):
     __tablename__ = 'Notes'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(128), nullable=True)
+    title = db.Column(db.String(128))
     message = db.Column(db.String(2048), nullable=False)
     created_at = db.Column(db.DateTime, default=horario_sao_paulo, nullable=False)
     updated_at = db.Column(db.DateTime, default=horario_sao_paulo, nullable=False)
-    deleted_at = db.Column(db.DateTime, nullable=True)
+    deleted_at = db.Column(db.DateTime)
     # user_id = db.Column(db.Integer, db.ForeignKey('Users.id'), nullable=False)
 
     def to_dict(self):
