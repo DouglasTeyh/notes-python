@@ -44,9 +44,5 @@ class NotesController:
     def excluir_nota(id_nota: int):
         nota_a_excluir = NotesController.buscar_nota_por_id(id_nota)
         
-        try:
-           nota_a_excluir.deleted_at = datetime.datetime.now(pytz.timezone("America/Sao_Paulo"))
-        except Exception as e:
-            raise e('Erro ao atualizar horário de exclusão da nota')
         return NotesRepository.excluir_nota(nota_a_excluir)
     
