@@ -9,10 +9,6 @@ class NotesController:
     def criar_nota(data: object):
         nota = data
         nota.message = verify_string(data.message, 'message')
-
-        # if not nota.user_id:
-        #     raise ValueError('user_id é obrigatório')
-        
         nota_criada = NotesRepository.criar_nota(nota)
         return nota_criada
     
