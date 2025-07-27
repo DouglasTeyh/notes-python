@@ -9,6 +9,10 @@ class NotesController:
     def criar_nota(data: object):
         nota = data
         nota.message = verify_string(data.message, 'message')
+        if len (nota.title) > 128:
+            raise ValueError('Tamanho do titulo não pode ultrapassar 128 caracteres')
+        if len (nota.message) > 2048:
+            raise ValueError('Tamanho da mensagem não pode ultrapassar 2048 caracteres')
         nota_criada = NotesRepository.criar_nota(nota)
         return nota_criada
     
@@ -20,16 +24,16 @@ class NotesController:
         return nota
 
     @staticmethod
-    def buscar_nota_por_usuario():
-        pass
-
-    @staticmethod
     def editar_nota(id_nota: int, data: object):
         nota = NotesController.buscar_nota_por_id(id_nota)
         if not nota:
             raise NotaNaoEncontradaException('Nota não encontrada no banco de dados')
         nota.title = data.title
         nota.message = verify_string(data.message, 'message')
+        if len (nota.title) > 128:
+            raise ValueError('Tamanho do titulo não pode ultrapassar 128 caracteres')
+        if len (nota.message) > 2048:
+            raise ValueError('Tamanho da mensagem não pode ultrapassar 2048 caracteres')
         try:
             nota.updated_at = datetime.datetime.now(pytz.timezone("America/Sao_Paulo"))
         except Exception as e:

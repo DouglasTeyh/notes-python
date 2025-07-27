@@ -18,10 +18,6 @@ class NotesRepository:
         return Note.query.filter_by(id=id_nota).first()
 
     @staticmethod
-    def buscar_nota_por_usuario(id_usuario: int, id_nota: int):
-        pass
-
-    @staticmethod
     def editar_nota(data: object):
         try:
             db.session.add(data)
