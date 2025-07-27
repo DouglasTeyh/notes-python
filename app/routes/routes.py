@@ -10,7 +10,7 @@ def adicionar_nota():
     data = request.get_json()
     
     try:
-        nova_nota = NotesController.criar_nota(Note(title=data['title'], message=data['message'])) # user_id=id_usuario
+        nova_nota = NotesController.criar_nota(Note(title=data['title'], message=data['message']))
         return jsonify(nova_nota.to_dict()), 201
     except ValueError as ve:
         return jsonify({'Error': str(ve)}), 400
@@ -26,15 +26,6 @@ def buscar_nota_por_id(id_nota):
         return jsonify({'Error': str(nnee)}), 400
     except Exception as e:
         return jsonify({'Error': 'Erro desconhecido'}), 500
-
-@note_bp.route('/<int:id_usuario>', methods=['GET'])
-def buscar_nota_por_usuario(id_usuario): #A fazer
-
-        nota = Note.query.filter_by(id=id).first()
-        if nota:
-            return jsonify(nota.to_dict()), 200
-        else:
-            return jsonify({'message': 'Nota não encontrada'}), 404
     
 @note_bp.route('/<int:id_nota>', methods=['PUT'])
 def editar_nota(id_nota):
