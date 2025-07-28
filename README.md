@@ -70,13 +70,13 @@ A URL base para todos os endpoints é `/notes`.
 
 O objeto `Note` possui a seguinte estrutura:
 
-| Atributo     | Tipo    | Descrição                                 |
-| :----------- | :------ | :---------------------------------------- |
-| `id`         | integer | Identificador único da nota.              |
-| `title`      | string  | Título da nota (máx. 128 caracteres).     |
-| `message`    | string  | Conteúdo da nota (máx. 2048 caracteres).  |
-| `created_at` | string  | Data e hora de criação (formato ISO 8601). |
-| `updated_at` | string  | Data e hora da última atualização (ISO 8601). |
+| Atributo     | Tipo       | Descrição                                 |
+| :----------- | :----------| :---------------------------------------- |
+| `id`         | integer    | Identificador único da nota.              |
+| `title`      | string     | Título da nota (máx. 128 caracteres).     |
+| `message`    | string     | Conteúdo da nota (máx. 2048 caracteres).  |
+| `created_at` | timestamp  | Data e hora de criação (formato ISO 8601). |
+| `updated_at` | timestamp  | Data e hora da última atualização (ISO 8601). |
 
 <br>
 
