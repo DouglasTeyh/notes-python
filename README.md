@@ -55,7 +55,7 @@ Siga os passos abaixo para configurar e executar o projeto localmente.
 Com o ambiente virtual ativado e o arquivo `.env` configurado, execute o comando abaixo para iniciar o servidor. As tabelas do banco de dados serão criadas automaticamente na primeira execução.
 
 ```bash
-python main.py
+flask run
 ```
 
 O servidor estará disponível em `http://127.0.0.1:5000`.
