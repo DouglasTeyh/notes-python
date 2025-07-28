@@ -24,6 +24,11 @@ class NotesController:
         return nota
 
     @staticmethod
+    def buscar_todas_notas():
+        notas = NotesRepository.buscar_todas_notas()
+        return [nota.to_dict() for nota in notas]
+    
+    @staticmethod
     def editar_nota(id_nota: int, data: object):
         nota = NotesController.buscar_nota_por_id(id_nota)
         if not nota:
