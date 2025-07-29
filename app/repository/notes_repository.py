@@ -18,6 +18,10 @@ class NotesRepository:
         return Note.query.filter_by(id=id_nota).first()
 
     @staticmethod
+    def buscar_todas_notas():
+        return Note.query.all()
+
+    @staticmethod
     def editar_nota(data: object):
         try:
             db.session.add(data)

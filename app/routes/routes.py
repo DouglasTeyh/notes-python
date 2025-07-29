@@ -27,6 +27,16 @@ def buscar_nota_por_id(id_nota):
     except Exception as e:
         return jsonify({'Error': 'Erro desconhecido'}), 500
     
+
+@note_bp.route('/', methods=['GET'])
+def buscar_todas_notas(): 
+    try:
+        notas = NotesController.buscar_todas_notas()
+        return jsonify(notas), 200
+    except Exception as e:
+        return jsonify({'Error': 'Erro desconhecido'}), 500
+    
+
 @note_bp.route('/<int:id_nota>', methods=['PUT'])
 def editar_nota(id_nota):
     data = request.get_json()
